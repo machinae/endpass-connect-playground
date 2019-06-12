@@ -6,7 +6,7 @@
   <script
 src="https://cdn.jsdelivr.net/npm/web3@0.20.6/dist/web3.min.js"></script>
   <script
-src="https://cdn.jsdelivr.net/npm/@endpass/connect@0.22.1-beta/dist/endpass-connect.min.js"></script>
+src="https://cdn.jsdelivr.net/npm/@endpass/connect@0.22.1-beta"></script>
   <script src="app.js"></script>
   <link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
@@ -18,8 +18,20 @@ src="https://cdn.jsdelivr.net/npm/@endpass/connect@0.22.1-beta/dist/endpass-conn
       <p class="lead">Click the "Sign In" button before to log in with
         Endpass connect.</p>
       <div class="block-height">
-        <p>Current block height: 
-          <span id="block-height" class="has-text-weight-bold">Loading...</span></p>
+        <p>
+          <span class="caption">Current block height:</span> 
+          <span id="block-height" class="has-text-weight-bold">Loading...</span>
+        </p>
+      </div>
+      <div class="account-info">
+        <p>
+          <span class="caption">Selected Account</span>
+          <span id="address" class="has-text-weight-bold">Not Logged In</span>
+        </p>
+        <p>
+          <span class="caption">Your Ethereum Balance</span>
+          <span id="balance" class="has-text-weight-bold">Not Logged In</span>
+        </p>
       </div>
     </div>
   </div>

@@ -5,7 +5,25 @@ web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/zU4GT
 
 // Run when document has loaded
 window.addEventListener('DOMContentLoaded', function(e) {
-  // Get the current block number and verify the connection
-  let blockNumber = web3.eth.blockNumber;
-  document.querySelector("#block-height").innerHTML = blockNumber;
+  loadData();
 });
+
+function loadData() {
+  // Get the current block number and verify the connection
+  web3.eth.getBlockNumber(function(err, res) {
+    document.querySelector("#block-height").innerHTML = res;
+  });
+
+  // Get the list of the user's accounts
+  // We will always return one in the array
+  web3.eth.getAccounts(function(err, res) {
+    if (res.length) {
+      document.querySelector("#address").innerHTML = res[0];
+      let addr = res[0];
+
+      let resB = web3.eth.getBalance(addr);
+      let bal = web3.fromWei(resB, 'ether');
+      document.querySelector("#balance").innerHTML = bal.toString();
+    }
+  });
+}
