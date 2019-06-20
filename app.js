@@ -27,15 +27,26 @@ window.web3 = web3;
 
 // Run when document has loaded
 window.addEventListener('DOMContentLoaded', function(e) {
-  loadData();
+  // sign in button loads the login form
+  let buttons = document.querySelectorAll(".js-sign-in");
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      loadUserData();
+    });
+  });
+
+  // Public data like the current block height can be loaded right away
+  loadChainData();
 });
 
-function loadData() {
+function loadChainData() {
   // Get the current block number and verify the connection
   web3.eth.getBlockNumber(function(err, res) {
     document.querySelector("#block-height").innerHTML = res;
   });
+}
 
+function loadUserData() {
   // Get the list of the user's accounts
   // We will always return one in the array
   web3.eth.getAccounts(function(err, res) {
