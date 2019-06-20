@@ -3,23 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Endpass Connect Playground</title>
-  <script
-src="https://cdn.jsdelivr.net/npm/web3@0.20.6/dist/web3.min.js"></script>
-  <script
-src="https://cdn.jsdelivr.net/npm/@endpass/connect@0.22.1-beta/dist/endpass-connect.min.js"></script>
-  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@0.20.6/dist/web3.min.js"></script>
+  <script src="https://unpkg.com/@endpass/connect@latest/dist/endpass-connect.browser.js" type="text/javascript"></script>
+  <script type="text/javascript" src="app.js"></script>
   <link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
 </head>
 <body>
-  <div class="section">
+
+  <div class="section section-heading">
     <div class="container">
       <h1 class="is-size-2">Endpass Connect Playground</h1>
-      <p class="lead">Click the "Sign In" button before to log in with
+      <p id="status" class="lead status-text">Click the "Get Balance" button before to log in with
         Endpass connect.</p>
+      <div class="div sign-in">
+        <a class="button is-primary js-sign-in">Get Balance</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-results">
+    <div class="container">
       <div class="block-height">
-        <p>Current block height: 
-          <span id="block-height" class="has-text-weight-bold">Loading...</span></p>
+        <p>
+          <span class="caption">Current block height:</span> 
+          <span id="block-height" class="has-text-weight-bold">Loading...</span>
+        </p>
+      </div>
+      <div class="account-info">
+        <p>
+          <span class="caption">Selected Account</span>
+          <span id="address" class="has-text-weight-bold">Not Logged In</span>
+        </p>
+        <p>
+          <span class="caption">Your Ethereum Balance</span>
+          <span id="balance" class="has-text-weight-bold">Not Logged In</span>
+        </p>
       </div>
     </div>
   </div>
