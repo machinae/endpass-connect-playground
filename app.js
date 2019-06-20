@@ -47,16 +47,22 @@ function loadChainData() {
 }
 
 function loadUserData() {
+  document.querySelector("#status").innerHTML = "Waiting for user to log in";
   // Get the list of the user's accounts
   // We will always return one in the array
   web3.eth.getAccounts(function(err, res) {
-    if (res.length) {
+    if (err) {
+      console.log(err);
+      document.querySelector("#status").innerHTML = 'ERROR: ' + err;
+    }
+    else if (res.length) {
       document.querySelector("#address").innerHTML = res[0];
       let addr = res[0];
 
       let resB = web3.eth.getBalance(addr);
       let bal = web3.fromWei(resB, 'ether');
       document.querySelector("#balance").innerHTML = bal.toString();
+      document.querySelector("#status").innerHTML = "Got data from blockchain!";
     }
   });
 }
