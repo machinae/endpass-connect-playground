@@ -50,13 +50,13 @@ function loadUserData() {
   document.querySelector("#status").innerHTML = "Waiting for user to log in";
   // Get the list of the user's accounts
   // We will always return one in the array
-  web3.eth.personal.getAccounts().then(res => {
+  web3.eth.getAccounts().then(res => {
     if (res.length) {
       document.querySelector("#address").innerHTML = res[0];
       let addr = res[0];
 
       web3.eth.getBalance(addr).then(res => {
-        let bal = web3.fromWei(res, 'ether');
+        let bal = web3.utils.fromWei(res, 'ether');
         document.querySelector("#balance").innerHTML = bal.toString();
         document.querySelector("#status").innerHTML = "Got data from blockchain!";
       });
