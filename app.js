@@ -11,6 +11,13 @@ const web3 = new Web3(WEB3_PROVIDER);
 // Create a new Endpass Connect instance with our registered client id
 const connect = new EndpassConnect({
   oauthClientId: OAUTH_APP_ID,
+  widget: {
+  // optional position 
+    position: {
+      bottom: '0',
+      right: '0',
+    },
+  },
 });
 
 // Get the Endpass web3 provider
