@@ -5,7 +5,7 @@ const WEB3_PROVIDER = "https://mainnet.infura.io/zU4GTAQ0LjJNKddbyztc";
 // Client ID registered at https://vault.endpass.com
 const OAUTH_APP_ID = "a616a3e4-50bb-4eae-a5b1-0aeda6683bc9";
 
-// Latest web3.js 0.20.x version without cors issues is 0.20.6
+// Create a new instance of web3
 const web3 = new Web3(WEB3_PROVIDER);
 
 // Create a new Endpass Connect instance with our registered client id
@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
 
 function loadChainData() {
   // Get the current block number and verify the connection
-  web3.eth.getBlockNumber(function(err, res) {
+  web3.eth.getBlockNumber().then(res => {
     document.querySelector("#block-height").innerHTML = res;
   });
 }
