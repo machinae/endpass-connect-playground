@@ -1,5 +1,5 @@
 // Initialize a global web3 instance connecting to a remote node
-// We are using the Infura Ethereum node here, but you can use the URL of any provider. 
+// We are using the Infura Ethereum node here, but you can use the URL of any provider.
 const WEB3_PROVIDER = "https://mainnet.infura.io/zU4GTAQ0LjJNKddbyztc";
 
 // Client ID registered at https://vault.endpass.com
@@ -9,10 +9,11 @@ const OAUTH_APP_ID = "a616a3e4-50bb-4eae-a5b1-0aeda6683bc9";
 const web3 = new Web3(WEB3_PROVIDER);
 
 // Create a new Endpass Connect instance with our registered client id
-const connect = new EndpassConnect({
+const connect = new window.EndpassConnect({
   oauthClientId: OAUTH_APP_ID,
+  plugins: [window.EndpassProviderPlugin],
   widget: {
-  // optional position 
+  // optional position
     position: {
       bottom: '0',
       right: '0',
